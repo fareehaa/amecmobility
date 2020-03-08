@@ -1,0 +1,84 @@
+@extends('admin.layouts.app')
+@section('header')
+<link rel="stylesheet" href="{{asset('admin/plugins/select2/select2.min.css')}}">
+@endsection
+@section('main-content')
+
+
+  <div class="box box-primary">
+    <div class="box-header with-border">
+      <h3 class="box-title">Add Post</h3>
+    </div>
+    <!-- /.box-header -->
+    <!-- form start -->
+{{--    @include('includes.msg') --}}
+  <form role="form" method="post" action="" enctype="multipart/form-data">
+  {{csrf_field()}}
+    <div class="box-body">
+    <div class="col-lg-6">
+    <div class="form-group">
+    <label for="">Title</label>
+    <input type="text" class="form-control" name="title" placeholder="title">
+    </div>
+    
+    <div class="form-group">
+      <label for="exampleInputPassword1">slug</label>
+      <input type="text" class="form-control" name="slug" placeholder="slug">
+      </div>
+    </div>
+    <div class="col-lg-6">
+    <div class="form-group">
+    <label for="exampleInputFile">Select Product Image</label>
+    <input type="file" id="exampleInputFile" name="img">
+    </div>
+    <div class="form-group">
+      
+      <label>Select Products</label>
+        <select class="form-control select2" multiple="multiple" data-placeholder="Select a State" style="width: 100%;">
+          <option>Alabama</option>
+          <option>Alaska</option>
+          <option>California</option>
+          <option>Delaware</option>
+          <option>Tennessee</option>
+          <option>Texas</option>
+          <option>Washington</option>
+        </select>
+    </div>
+    <div class="form-group">
+      
+      <label>Select Stars</label>
+        <select class="form-control"  data-placeholder="Select Stars" style="width: 100%;">
+          <option>*</option>
+          <option>**</option>
+          <option>***</option>
+          <option>****</option>
+          <option>*****</option>
+          
+        </select>
+    </div>
+    {{-- <div class="form-group">
+      <label>select Category</label>
+      <select class="form-control select2" name="categories[]" multiple="multiple" data-placeholder="Select a State" style="width: 100%;" >
+        
+          
+          @foreach($cats as $categorie)
+          <option value="{{$categorie->id}}">{{$categorie->name}} </option>
+          @endforeach
+      </select>
+    </div> --}}
+    <div class="checkbox">
+    <label>
+    <input type="checkbox" name="status" value="1"> Publish
+    </label>
+    </div>
+    </div>
+    </div>
+    <h3 class="box-title">Write your Revie</h3>
+    <br>
+    <textarea name="body" {{-- class="textarea" --}} placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+    <div class="box-footer">
+    <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+    </div>
+</form>
+@endsection
